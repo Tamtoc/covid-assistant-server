@@ -32,6 +32,7 @@ const reviewToken = ( req, res ) => {
     if ( req.user ) {
         res.json({
             ok: true,
+            user: req.user,
             msg: 'Valid token'
         })
     }
