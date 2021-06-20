@@ -27,7 +27,19 @@ const login = async ( req, res ) => {
 
 } 
 
+const reviewToken = ( req, res ) => {
+
+    if ( req.user ) {
+        res.json({
+            ok: true,
+            msg: 'Valid token'
+        })
+    }
+
+}
+
 module.exports = {
-    login
+    login,
+    reviewToken
 }
 
