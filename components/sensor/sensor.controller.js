@@ -32,7 +32,7 @@ const postData = async ( req, res ) => {
     }
 
     res.json({
-        user:newData
+        data:newData
     });
 }
 
