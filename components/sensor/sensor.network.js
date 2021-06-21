@@ -1,8 +1,10 @@
 const { Router } = require('express');
 
-const { postData } = require('./sensor.controller');
+const { getData, postData } = require('./sensor.controller');
 
 const router = Router();
+
+router.get('/', getData );
 
 router.post('/', postData);
 
