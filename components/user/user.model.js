@@ -20,7 +20,15 @@ const User = dbConnection().define('User', {
         defaultValue: 'USER_ROLE'
     },
     state: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    img: {
+        type: DataTypes.STRING
+    },
+    google: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 
 });
