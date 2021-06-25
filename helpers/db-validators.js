@@ -21,7 +21,22 @@ const userExistsById = async ( id ) => {
 
 }
 
+/**
+ * Valid collections
+ */
+ const validTables = ( table = '', tables = []) => {
+
+    const includes = tables.includes( table );
+
+    if ( !includes ) {
+        throw new Error(`The table ${ collection } is not valid`);
+    }
+
+    return true;
+}
+
 module.exports = {
     emailExists,
-    userExistsById
+    userExistsById,
+    validTables
 }
