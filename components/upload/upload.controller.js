@@ -78,7 +78,7 @@ const getImage = async ( req, res ) => {
 
     }
 
-    const pathImage = path.join( __dirname, '../public/assets/without-image.png' );
+    const pathImage = path.join( __dirname, '../../public/assets/without-image.png' );
     res.sendFile( pathImage );
 
 }
