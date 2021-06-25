@@ -14,8 +14,6 @@ router.get( '/', getUsers );
 router.get( '/:id', getUser );
 
 router.post( '/', [
-    validateJWT,
-    hasRole('ADMIN_ROLE'),
     check('first_name', 'first name is required').not().isEmpty(),
     check('last_name', 'last name is required').not().isEmpty(),
     check('email', 'Invalid email').isEmail(),
