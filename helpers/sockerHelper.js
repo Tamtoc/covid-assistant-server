@@ -1,9 +1,9 @@
-const socketController = async ( socket, io ) => {
+const socketHelper = async ( socket, io ) => {
 
     console.log('User connected');
 
 }
 
 module.exports = {
-    socketController
+    socketHelper
 }
