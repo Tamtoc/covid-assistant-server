@@ -16,7 +16,11 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.server = createServer( this.app );
-        this.io = require('socket.io')( this.server );
+        this.io = require('socket.io')( this.server, {
+            cors: {
+              origin: '*',
+            }
+        } );
 
         // Conexión a base de datos
         this.connectDB();
@@ -52,7 +56,7 @@ class Server {
     middlewares() {
 
         // CORS
-        this.server.use( cors() );
+        this.app.use( cors() );
 
         // Lectura y parseo del body
         this.app.use( express.json() );
