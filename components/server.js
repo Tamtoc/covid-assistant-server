@@ -52,7 +52,7 @@ class Server {
     middlewares() {
 
         // CORS
-        this.app.use( cors() );
+        this.server.use( cors() );
 
         // Lectura y parseo del body
         this.app.use( express.json() );
