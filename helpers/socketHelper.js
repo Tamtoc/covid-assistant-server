@@ -12,9 +12,9 @@ const socketHelper = async ( socket, io ) => {
         io.emit('messages', { id: null, message: welcome })
     })
 
-    socket.on('message', (id, message) => {
+    socket.on('message', (id, name, message) => {
 
-        io.emit('messages', {id, message});
+        io.emit('messages', {id, name, message});
 
         switch (message) {
             case "¿Cuantas personas han entrado a mi hogar el día de hoy?":
@@ -27,13 +27,13 @@ const socketHelper = async ( socket, io ) => {
                 io.emit('messages', { id: null, message: "Estoy para servirte :3" })
                 break;  
             case "Adios":
-                io.emit('messages', { id: null, message: "Hasta pronto!" })
+                io.emit('messages', { id: null, message: `Hasta pronto ${name}!` })
                 break;  
             case "Hola":
-                io.emit('messages', { id: null, message: "Hola" })
+                io.emit('messages', { id: null, message: `Hola ${name}!` })
                 break; 
             case "Opciones":
-                io.emit('messages', { id: null, message: "Bienvenido! ¿Que te gustaría conocer?: \n" + 
+                io.emit('messages', { id: null, message: "Las opciones que tengo son: \n" + 
                 "1. ¿Cuantas personas han entrado a mi hogar el día de hoy? \n" +
                 "2. ¿Cuándo fue la última ves que alguien entró a mi casa? \n" +
                 "3. Gracias \n" +
