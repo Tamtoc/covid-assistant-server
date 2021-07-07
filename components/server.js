@@ -7,7 +7,7 @@ const router = require('../network/routes');
 
 const { dbConnection } = require('../database/config');
 
-const { socketHelper } = require('../helpers/sockerHelper');
+const { socketHelper } = require('../helpers/socketHelper');
 
 class Server {
 
