@@ -5,7 +5,7 @@ const socketHelper = async ( socket, io ) => {
     })
 
     socket.on('message', (id, message) => {
-        io.emit('messages', (id, message));
+        io.emit('messages', {id, message});
     })
 
 }
