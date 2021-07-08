@@ -33,7 +33,7 @@ const socketHelper = async ( socket, io ) => {
                     if ( dd == date[2] && mm == date[1] && yyyy == date[0] ) c++;
 
                 });
-                io.emit('messages', { id: null, message: `Han entrado ${c} persona(s) a tu hogar el día de hoy` })
+                io.emit('messages', { id: null, message: `Han entrado ${c} persona(s) a tu hogar el día de hoy ${dd} ${mm} ${yyyy}` })
                 break;
             case "¿Cuándo fue la última ves que alguien entró a mi casa?":
             
