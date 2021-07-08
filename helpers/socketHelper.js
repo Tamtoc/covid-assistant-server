@@ -15,10 +15,10 @@ const socketHelper = async ( socket, io ) => {
     socket.on('message', async (id, name, message) => {
 
         io.emit('messages', {id, name, message});
+        const { data } = await sensorStore.getData( 10000, 0 );
 
         switch (message) {
             case "¿Cuantas personas han entrado a mi hogar el día de hoy?":
-                const { data } = await sensorStore.getData( 10000, 0 );
                 let dd;
                 let mm;
                 let yyyy;
@@ -43,7 +43,6 @@ const socketHelper = async ( socket, io ) => {
                 io.emit('messages', { id: null, message: `Han entrado ${c} persona(s) a tu hogar el día de hoy` })
                 break;
             case "¿Cuándo fue la última ves que alguien entró a mi casa?":
-                const { data } = await sensorStore.getData( 10000, 0 );
                 let lastRecord = data[data.length - 1];
                 let recordDate = new Date(lastRecord.createdAt + '');
 
