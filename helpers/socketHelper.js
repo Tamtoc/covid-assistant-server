@@ -27,14 +27,11 @@ const socketHelper = async ( socket, io ) => {
                 let c = 0;
                 let recordDate;
                 data.map((record) => {
-                    // let fullDate = record.createdAt + '';
-                    // date = fullDate.split('T')[0];
                     let currentDate = new Date();
-                    // date = date.split('-');
 
                     recordDate = new Date(record.createdAt + '');
                     date[0] = recordDate.getDate();
-                    date[1] = recordDate.getMonth();
+                    date[1] = recordDate.getMonth()+1;
                     date[2] = recordDate.getFullYear();
 
 
