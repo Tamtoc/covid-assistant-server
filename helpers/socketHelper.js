@@ -26,11 +26,15 @@ const socketHelper = async ( socket, io ) => {
                 let date;
                 let c = 0;
                 data.map((record) => {
-                    let fullDate = record.createdAt + '';
+                    // let fullDate = record.createdAt + '';
+                    // date = fullDate.split('T')[0];
+                    // let currentDate = new Date();
+                    // date = date.split('-');
+                    let fullDate = Date.parse(record.createdAt) + '';
                     date = fullDate.split('T')[0];
                     let currentDate = new Date();
                     date = date.split('-');
-                    // date = date[2]+ '-' + date[1] + '-' + date[0];
+
                     dd = currentDate.getDate()-1;
                     mm = currentDate.getMonth()+1;
                     yyyy = currentDate.getFullYear();
