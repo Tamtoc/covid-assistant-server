@@ -47,7 +47,7 @@ const socketHelper = async ( socket, io ) => {
                 recordDate = new Date(lastRecord.createdAt + '');
 
                 date[0] = recordDate.getDate();
-                date[1] = recordDate.getMonth();
+                date[1] = recordDate.getMonth()+1;
                 date[2] = recordDate.getFullYear();
                 let lastDate = date[0] + '/' + date[1] + '/' + date[2]; 
                 io.emit('messages', { id: null, message: `La fecha en que la última persona entró a su casa es ${lastDate}` })
