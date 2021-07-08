@@ -1,4 +1,4 @@
-const { getData } = require('../components/sensor/sensor.controller');
+const sensorStore = require('../components/sensor/sensor.store');
 
 const socketHelper = async ( socket, io ) => {
 
@@ -18,7 +18,22 @@ const socketHelper = async ( socket, io ) => {
 
         switch (message) {
             case "¿Cuantas personas han entrado a mi hogar el día de hoy?":
-                
+                const { data, total } = await sensorStore.getData( 10000, 0 );
+                const dates = [];
+                let c = 0;
+                data.map((record) => {
+                    let fullDate = record.createdAt;
+                    let date = fullDate.split('T')[0];
+                    let currentDate = new Date();
+                    date = date.split('-');
+                    // date = date[2]+ '-' + date[1] + '-' + date[0];
+                    let dd = currentDate.getDate();
+                    let mm = currentDate.getMonth()+1;
+                    let yyyy = currentDate.getFullYear();
+                    if ( dd == date[2] && mm == date[1] && yyyy == date[0] ) c++;
+
+                });
+                io.emit('messages', { id: null, message: `Han entrado ${c} persona(s) a tu hogar el día de hoy` })
                 break;
             case "¿Cuándo fue la última ves que alguien entró a mi casa?":
             
