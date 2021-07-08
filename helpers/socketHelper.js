@@ -22,7 +22,7 @@ const socketHelper = async ( socket, io ) => {
                 const dates = [];
                 let c = 0;
                 data.map((record) => {
-                    let fullDate = record.createdAt;
+                    let fullDate = record.createdAt + '';
                     let date = fullDate.split('T')[0];
                     let currentDate = new Date();
                     date = date.split('-');
