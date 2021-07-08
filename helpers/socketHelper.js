@@ -30,7 +30,7 @@ const socketHelper = async ( socket, io ) => {
                     let currentDate = new Date();
                     date = date.split('-');
                     // date = date[2]+ '-' + date[1] + '-' + date[0];
-                    dd = currentDate.getDate();
+                    dd = currentDate.getDate()-1;
                     mm = currentDate.getMonth()+1;
                     yyyy = currentDate.getFullYear();
                     if ( dd == date[2] && mm == date[1] && yyyy == date[0] ) c++;
