@@ -12,7 +12,7 @@ const socketHelper = async ( socket, io ) => {
         io.emit('messages', { id: null, message: welcome })
     })
 
-    socket.on('message', (id, name, message) => {
+    socket.on('message', async (id, name, message) => {
 
         io.emit('messages', {id, name, message});
 
