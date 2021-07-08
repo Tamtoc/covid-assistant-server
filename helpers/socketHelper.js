@@ -17,13 +17,13 @@ const socketHelper = async ( socket, io ) => {
         io.emit('messages', {id, name, message});
         const { data } = await sensorStore.getData( 10000, 0 );
         let recordDate;
+        let date = [];
 
         switch (message) {
             case "¿Cuantas personas han entrado a mi hogar el día de hoy?":
                 let dd;
                 let mm;
                 let yyyy;
-                let date = [];
                 let c = 0;
                 data.map((record) => {
                     let currentDate = new Date();
@@ -46,7 +46,6 @@ const socketHelper = async ( socket, io ) => {
                 let lastRecord = data[data.length - 1];
                 recordDate = new Date(lastRecord.createdAt + '');
 
-                let date = [];
                 date[0] = recordDate.getDate();
                 date[1] = recordDate.getMonth();
                 date[2] = recordDate.getFullYear();
