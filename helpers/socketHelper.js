@@ -26,23 +26,25 @@ const socketHelper = async ( socket, io ) => {
                 let date;
                 let fullDate;
                 let c = 0;
+                let recordDate;
                 data.map((record) => {
                     // let fullDate = record.createdAt + '';
                     // date = fullDate.split('T')[0];
                     // let currentDate = new Date();
                     // date = date.split('-');
-                    fullDate = Date.parse(record.createdAt);
-                    date = fullDate.split('T')[0];
-                    let currentDate = new Date();
-                    date = date.split('-');
 
-                    dd = currentDate.getDate()-1;
-                    mm = currentDate.getMonth()+1;
-                    yyyy = currentDate.getFullYear();
-                    if ( dd == date[2] && mm == date[1] && yyyy == date[0] ) c++;
+                    recordDate = new Date(record.createdAt + '');
+                    // date = fullDate.split('T')[0];
+                    // let currentDate = new Date();
+                    // date = date.split('-');
+
+                    // dd = currentDate.getDate()-1;
+                    // mm = currentDate.getMonth()+1;
+                    // yyyy = currentDate.getFullYear();
+                    // if ( dd == date[2] && mm == date[1] && yyyy == date[0] ) c++;
 
                 });
-                io.emit('messages', { id: null, message: `Han entrado ${c} persona(s) a tu hogar el día de hoy ${date[2]} ${date[1]} ${date[0]} ${fullDate}` })
+                io.emit('messages', { id: null, message: `Han entrado ${c} persona(s) a tu hogar el día de hoy  ${recordDate}` })
                 break;
             case "¿Cuándo fue la última ves que alguien entró a mi casa?":
             
