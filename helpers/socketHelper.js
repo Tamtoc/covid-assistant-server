@@ -16,6 +16,7 @@ const socketHelper = async ( socket, io ) => {
 
         io.emit('messages', {id, name, message});
         const { data } = await sensorStore.getData( 10000, 0 );
+        let recordDate;
 
         switch (message) {
             case "¿Cuantas personas han entrado a mi hogar el día de hoy?":
@@ -24,7 +25,6 @@ const socketHelper = async ( socket, io ) => {
                 let yyyy;
                 let date = [];
                 let c = 0;
-                let recordDate;
                 data.map((record) => {
                     let currentDate = new Date();
 
@@ -44,14 +44,14 @@ const socketHelper = async ( socket, io ) => {
                 break;
             case "¿Cuándo fue la última ves que alguien entró a mi casa?":
                 let lastRecord = data[data.length - 1];
-                let recordDate = new Date(lastRecord.createdAt + '');
+                recordDate = new Date(lastRecord.createdAt + '');
 
                 let date = [];
                 date[0] = recordDate.getDate();
                 date[1] = recordDate.getMonth();
                 date[2] = recordDate.getFullYear();
-                let lastRecord = date[0] + '/' + date[1] + '/' + date[2]; 
-                io.emit('messages', { id: null, message: `La fecha en que la última persona entró a su casa es ${lastRecord}` })
+                let lastDate = date[0] + '/' + date[1] + '/' + date[2]; 
+                io.emit('messages', { id: null, message: `La fecha en que la última persona entró a su casa es ${lastDate}` })
                 break;    
             case "Gracias":
                 io.emit('messages', { id: null, message: "Estoy para servirte :3" })
